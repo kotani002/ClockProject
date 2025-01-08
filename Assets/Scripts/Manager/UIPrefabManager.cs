@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using E_PrefabNames;
 
-public class UIPrefabManager : MonoBehaviour
+public class UIPrefabManager : SingletonMonoBehaviour<UIPrefabManager>
 {
     [SerializeField]
     private Transform _parentCanvasTransform;
     [SerializeField]
     private PrefabName _nowLevel = new PrefabName();
+    public PrefabName GetNowLevel()
+    {
+        return _nowLevel;
+    }
 
     [SerializeField]
     private List<PrefabContainer>_prefabContainers = new List<PrefabContainer>();
@@ -16,13 +20,13 @@ public class UIPrefabManager : MonoBehaviour
     private Dictionary<PrefabName,GameObject> _existPrefabContainersDictionary = new Dictionary<PrefabName, GameObject>();
 
     //呼ばれた名前のPrefabを呼び出す
-    void Start()
+    public void Awake()
     {
         foreach(var prefabContainer in  _prefabContainers)
         {
             DictionaryRegister(prefabContainer);
         }
-        CreatePrefab(PrefabName.DigitalClock,_parentCanvasTransform);
+        CreatePrefab(_nowLevel,_parentCanvasTransform);
     }
 
     //ディクショナリーに登録する
@@ -45,6 +49,13 @@ public class UIPrefabManager : MonoBehaviour
     {
         var  prefab = _existPrefabContainersDictionary[_nowLevel];
         Destroy(prefab);
+        _existPrefabContainersDictionary.Remove(_nowLevel);
+    }
+
+    public void ChangeClock(PrefabName key)
+    {
+        DestroyPrefab();
+        CreatePrefab(key,_parentCanvasTransform);
     }
 }
 

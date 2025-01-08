@@ -235,7 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1960289450646326138}
   m_Layer: 5
-  m_Name: TimeNeedle
+  m_Name: HourNeedle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -306,6 +306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4097103425775531214}
+  - component: {fileID: 7311230724615115372}
   m_Layer: 0
   m_Name: AnalogClockPrefab
   m_TagString: Untagged
@@ -331,6 +332,21 @@ Transform:
   - {fileID: 1960289450646326138}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7311230724615115372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5422689448199677145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67b01195774544447b3ebadf156638bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _secondNeedle: {fileID: 8969037284510387481}
+  _minuteNeedle: {fileID: 4682752349600042027}
+  _hourNeedle: {fileID: 3315820118301500572}
 --- !u!1 &8969037284510387481
 GameObject:
   m_ObjectHideFlags: 0
